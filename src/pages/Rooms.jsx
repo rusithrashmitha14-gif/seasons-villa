@@ -149,12 +149,12 @@ const Rooms = () => {
           <h2 className="section-title">Check Availability & Book</h2>
           <p className="section-subtitle">Select your dates and preferred room below.</p>
           
-          <div style={{ background: 'var(--color-white)', borderRadius: 'var(--radius-md)', padding: '1rem', boxShadow: 'var(--shadow-md)', marginTop: '2rem' }}>
+          <div style={{ background: 'var(--color-white)', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', marginTop: '2rem' }}>
             <iframe 
               src="https://brandspire-booking.vercel.app/embed/property-irmano" 
               width="100%" 
-              height="900px" 
-              style={{ border: 'none', borderRadius: 'var(--radius-sm)' }}
+              height="1050px" 
+              style={{ border: 'none', display: 'block' }}
               title="Seasons Villa Booking"
             ></iframe>
           </div>
