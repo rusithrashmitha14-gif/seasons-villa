@@ -144,20 +144,18 @@ const Rooms = () => {
       </section>
 
       {/* Custom Booking Widget Section */}
-      <section id="booking-widget" className="section section-beige">
-        <div className="container">
-          <h2 className="section-title">Check Availability & Book</h2>
-          <p className="section-subtitle">Select your dates and preferred room below.</p>
-          
-          <div style={{ background: 'var(--color-white)', borderRadius: 'var(--radius-md)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', marginTop: '2rem' }}>
-            <iframe 
-              src="https://brandspire-booking.vercel.app/embed/property-irmano" 
-              width="100%" 
-              height="1050px" 
-              style={{ border: 'none', display: 'block' }}
-              title="Seasons Villa Booking"
-            ></iframe>
-          </div>
+      <section id="booking-widget" className="section section-beige" style={{ paddingLeft: 0, paddingRight: 0 }}>
+        <h2 className="section-title" style={{ padding: '0 1.5rem' }}>Check Availability & Book</h2>
+        <p className="section-subtitle" style={{ padding: '0 1.5rem' }}>Select your dates and preferred room below.</p>
+        
+        <div style={{ marginTop: '2rem', width: '100%', overflow: 'hidden' }}>
+          <iframe 
+            src="https://brandspire-booking.vercel.app/embed/property-irmano" 
+            width="100%" 
+            height="1150px" 
+            style={{ border: 'none', display: 'block', minWidth: '100%' }}
+            title="Seasons Villa Booking"
+          ></iframe>
         </div>
       </section>
     </div>
