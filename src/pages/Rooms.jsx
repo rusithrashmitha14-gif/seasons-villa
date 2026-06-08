@@ -18,19 +18,26 @@ const Rooms = () => {
     }
   }, [hash]);
 
-  // Booking widget dynamic resize listener
+  // Booking widget dynamic resize and scroll listener
   useEffect(() => {
-    const handleResizeMessage = (e) => {
+    const handleWidgetMessage = (e) => {
       if (e.data && e.data.type === "resize-brandspire-widget") {
         const iframe = document.getElementById("brandspire-booking");
         if (iframe) {
           iframe.style.height = e.data.height + "px";
         }
       }
+      if (e.data && e.data.type === "scroll-to-top-brandspire-widget") {
+        const el = document.getElementById("brandspire-booking");
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 50;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
     };
 
-    window.addEventListener("message", handleResizeMessage);
-    return () => window.removeEventListener("message", handleResizeMessage);
+    window.addEventListener("message", handleWidgetMessage);
+    return () => window.removeEventListener("message", handleWidgetMessage);
   }, []);
 
   return (
