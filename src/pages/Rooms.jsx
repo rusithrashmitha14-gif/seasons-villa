@@ -20,6 +20,8 @@ const Rooms = () => {
 
   // Booking widget dynamic resize and scroll listener
   useEffect(() => {
+    const mountTime = Date.now();
+
     const handleWidgetMessage = (e) => {
       if (e.data && e.data.type === "resize-brandspire-widget") {
         const iframe = document.getElementById("brandspire-booking");
@@ -28,10 +30,13 @@ const Rooms = () => {
         }
       }
       if (e.data && e.data.type === "scroll-to-top-brandspire-widget") {
-        const el = document.getElementById("brandspire-booking");
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY - 50;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+        // Prevent auto-scroll on initial page load by ignoring events in the first 2 seconds
+        if (Date.now() - mountTime > 2000) {
+          const el = document.getElementById("brandspire-booking");
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.scrollY - 50;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
         }
       }
     };
