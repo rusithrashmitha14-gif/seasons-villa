@@ -18,6 +18,21 @@ const Rooms = () => {
     }
   }, [hash]);
 
+  // Booking widget dynamic resize listener
+  useEffect(() => {
+    const handleResizeMessage = (e) => {
+      if (e.data && e.data.type === "resize-brandspire-widget") {
+        const iframe = document.getElementById("brandspire-booking");
+        if (iframe) {
+          iframe.style.height = e.data.height + "px";
+        }
+      }
+    };
+
+    window.addEventListener("message", handleResizeMessage);
+    return () => window.removeEventListener("message", handleResizeMessage);
+  }, []);
+
   return (
     <div className="rooms-page" style={{ paddingTop: '80px' }}>
       <section className="section section-light">
@@ -150,10 +165,11 @@ const Rooms = () => {
         
         <div style={{ marginTop: '2rem', width: '100%', overflow: 'hidden' }}>
           <iframe 
+            id="brandspire-booking"
             src="https://brandspire-booking.vercel.app/embed/property-irmano" 
             width="100%" 
-            height="1150px" 
-            style={{ border: 'none', display: 'block', minWidth: '100%' }}
+            style={{ border: 'none', display: 'block', minWidth: '100%', minHeight: '800px', overflow: 'hidden' }}
+            scrolling="no"
             title="Seasons Villa Booking"
           ></iframe>
         </div>
